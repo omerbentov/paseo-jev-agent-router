@@ -1,9 +1,11 @@
-import type { PaseoApi } from "@getpaseo/client";
 import type { RpcInput, RpcOutput } from "@getpaseo/plugin";
+import type { PluginHandlerContext } from "@getpaseo/plugin/server";
 import type { getStatus, routeTask, saveSettings } from "../shared/contracts";
 import { ROUTE_ROW_KIND, ROUTE_ROW_VERSION } from "../shared/contracts";
 import { agentConfig, classify, decide, type Decision, type Profile } from "./jev";
 import { readSettings, resolveKey, writeSettings } from "./store";
+
+type PaseoApi = PluginHandlerContext["paseo"];
 
 /**
  * Profiles are read from the daemon on every call, so a profile added, edited
@@ -28,13 +30,13 @@ async function status(paseo: PaseoApi): Promise<RpcOutput<typeof getStatus>> {
   };
 }
 
-export function handleStatus(_input: RpcInput<typeof getStatus>, { paseo }: { paseo: PaseoApi }) {
+export function handleStatus(_input: RpcInput<typeof getStatus>, { paseo }: PluginHandlerContext) {
   return status(paseo);
 }
 
 export async function handleSave(
   input: RpcInput<typeof saveSettings>,
-  { paseo }: { paseo: PaseoApi },
+  { paseo }: PluginHandlerContext,
 ) {
   const current = await readSettings();
   await writeSettings({
@@ -47,7 +49,7 @@ export async function handleSave(
 
 export async function handleRoute(
   { workspaceId, task }: RpcInput<typeof routeTask>,
-  { paseo }: { paseo: PaseoApi },
+  { paseo }: PluginHandlerContext,
 ): Promise<RpcOutput<typeof routeTask>> {
   const [settings, profiles] = await Promise.all([readSettings(), loadProfiles(paseo)]);
   if (profiles.length === 0) {
