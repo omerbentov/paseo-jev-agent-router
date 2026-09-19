@@ -36,10 +36,10 @@ MSG
 fi
 
 if "$PASEO" plugin ls --json | grep -q "\"$PLUGIN_ID\""; then
-  echo "Updating ${PLUGIN_ID}…"
+  echo "Updating ${PLUGIN_ID}..."
   "$PASEO" plugin update "$PLUGIN_ID"
 else
-  echo "Installing ${PLUGIN_ID} from ${SOURCE}…"
+  echo "Installing ${PLUGIN_ID} from ${SOURCE}..."
   "$PASEO" plugin add "$SOURCE"
 fi
 
