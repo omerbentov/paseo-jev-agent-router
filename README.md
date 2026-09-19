@@ -1,5 +1,7 @@
 # Jev agent router for Paseo
 
+> **Status: not released yet.** We are waiting for [getpaseo/paseo#5081](https://github.com/getpaseo/paseo/pull/5081), which lets plugins see the task when an agent is created. Until it ships, `/route` works as a preview and Paseo's normal New agent flow is not routed. Progress: [#1](https://github.com/omerbentov/paseo-jev-agent-router/issues/1).
+
 Type `/route <task>` in a [Paseo](https://paseo.sh) workspace. The plugin asks [TypeSafe's Jev](https://typesafe.ai) which of **your** agent profiles fits the task, then starts an agent with that profile's provider, model, mode and thinking level.
 
 ```
