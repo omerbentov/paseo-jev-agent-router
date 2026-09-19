@@ -20,7 +20,7 @@ curl -fsSL https://raw.githubusercontent.com/omerbentov/paseo-jev-agent-router/m
 
 The script installs the plugin into your local Paseo daemon (or updates it), and asks for your TypeSafe key once. Run it again to update.
 
-Or do it by hand: `paseo plugin add github:omerbentov/paseo-jev-agent-router`, then paste your key under **Settings → Plugins → Jev agent router**.
+Or do it by hand: `paseo plugin add https://github.com/omerbentov/paseo-jev-agent-router.git`, then paste your key under **Settings → Plugins → Jev agent router**.
 
 ## How it chooses
 

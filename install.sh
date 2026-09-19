@@ -3,7 +3,7 @@
 #   curl -fsSL https://raw.githubusercontent.com/omerbentov/paseo-jev-agent-router/main/install.sh | bash
 set -euo pipefail
 
-SOURCE="${JEV_ROUTER_SOURCE:-github:omerbentov/paseo-jev-agent-router}"
+SOURCE="${JEV_ROUTER_SOURCE:-https://github.com/omerbentov/paseo-jev-agent-router.git}"
 PLUGIN_ID="jev-agent-router"
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/paseo-jev-agent-router/config.json"
 
